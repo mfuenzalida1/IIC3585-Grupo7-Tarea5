@@ -1,0 +1,16 @@
+<p>joke-list works!</p>
+<div class="submit-form">
+    <div *ngIf="!displayList">
+        <div class="form-group">
+            <label for="search">Busqueda</label>
+            <input type="text" class="form-control" id="search" required [(ngModel)]="searchInput" name="search" />
+        </div>
+
+        <button (click)="searchJoke()" class="btn btn-success">Buscar</button>
+    </div>
+    <div *ngIf="displayList">
+        <h4>Respuesta recibida!</h4>
+        <h2>Chiste: {{jokeTest.joke || jokeTest.message}}</h2>
+        <button class="btn btn-success" (click)="clearSearch()">Volver</button>
+    </div>
+</div>
