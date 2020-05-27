@@ -1,16 +1,65 @@
-<p>joke-list works!</p>
-<div class="submit-form">
-    <div *ngIf="!displayList">
-        <div class="form-group">
-            <label for="search">Busqueda</label>
-            <input type="text" class="form-control" id="search" required [(ngModel)]="searchInput" name="search" />
-        </div>
+<h1>JokesOnYou</h1>
 
-        <button (click)="searchJoke()" class="btn btn-success">Buscar</button>
+
+
+<div class="header">
+    <div class="home-menu pure-menu pure-menu-horizontal pure-menu-fixed">
+        <a class="pure-menu-heading" href="">JokesOnYou</a>
+
+        <ul class="pure-menu-list">
+            <li class="pure-menu-item pure-menu-selected"><a href="#" class="pure-menu-link">Home</a></li>
+            <li class="pure-menu-item"><a href="#" class="pure-menu-link">About Us</a></li>
+        </ul>
     </div>
-    <div *ngIf="displayList">
-        <h4>Respuesta recibida!</h4>
-        <h2>Chiste: {{jokeTest.joke || jokeTest.message}}</h2>
-        <button class="btn btn-success" (click)="clearSearch()">Volver</button>
+</div>
+
+<div class="splash-container">
+    <div class="splash">
+        <div class="pure-g">
+            <div class="l-box-lrg pure-u-1 pure-u-md-2-5 submit-form">
+                <div *ngIf="!displayList">
+                    <h1 class="content-head is-center">JokesOnYou</h1>
+                    <div class="l-box-lrg pure-u-1 pure-u-md-2-5">
+                        <form class="pure-form pure-form-stacked">
+                            <fieldset>
+                                <label for="search"></label>
+                                <input type="text" id="search" required [(ngModel)]="searchInput" name="search" placeholder="palabra en chiste" />
+                            </fieldset>
+                        </form>
+                    </div>
+                    <p>
+                        <a (click)="searchJoke()" class="pure-button pure-button-primary btn-fixed-size">Buscar chiste</a>
+                    </p>
+                    <p>
+                        <a (click)="randomJoke()" class="pure-button pure-button-primary btn-fixed-size">Chiste aleatorio</a>
+                    </p>
+                    <br>
+                    <br>
+                    <span>
+                        <p class="splash-subhead">
+                            Mas Información de la API de chistes en 
+                        </p>
+                        <a href="https://sv443.net/jokeapi/v2">
+                            https://sv443.net/jokeapi/v2
+                        </a>
+                    </span>
+                </div>
+                <div *ngIf="displayList">
+                    <div *ngIf="jokeList.size === 0 && !searching">
+                        <h4>No se encontraron chistes</h4>
+                    </div>
+                    <div *ngIf="jokeList.size !== 0">
+                        <ul>
+                            <li class="nobull" *ngFor="let joke of jokeList">
+                                <h6 class="joke-item"> {{joke}} </h6>
+                            </li>
+                        </ul>
+                    </div>
+                    <p>
+                        <a (click)="clearSearch()" class="pure-button pure-button-primary btn-fixed-size">Volver</a>
+                    </p>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

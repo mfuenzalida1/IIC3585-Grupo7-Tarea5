@@ -1,14 +1,31 @@
-<div>
-    <nav class="navbar navbar-expand navbar-dark bg-dark">
-        <a href="#" class="navbar-brand">JokesOnYou</a>
-        <div class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a routerLink="jokes" class="nav-link">Jokes</a>
-            </li>
-        </div>
-    </nav>
+<!DOCTYPE html>
+<html>
 
-    <div class="container mt-3">
-        <router-outlet></router-outlet>
+<head>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css" integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="JokesOnYou">
+    <title>JokesOnYou</title>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+</head>
+
+<body>
+    <div>
+        <!--
+                <nav class="navbar navbar-expand navbar-dark bg-dark">
+                    <div class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a routerLink="jokes" class="nav-link">Jokes</a>
+                        </li>
+                    </div>
+                </nav>
+            -->
+
+        <div class="container mt-3">
+            <router-outlet></router-outlet>
+        </div>
     </div>
-</div>
+</body>
+
+</html>
