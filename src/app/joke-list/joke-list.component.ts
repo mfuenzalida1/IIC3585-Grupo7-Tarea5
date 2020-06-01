@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { JokesService } from '../jokes.service';
 import { LocalStorageService } from '../local-storage.service';
 import { Constants } from '../app.constants';
+import { ShareJokeDialog } from './share-joke.component'
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-joke-list',
@@ -16,7 +18,7 @@ export class JokeListComponent implements OnInit {
   searching = false;
   myJokes = new Set(this.localStorageService.get(Constants.KEY_SAVED_JOKES));
 
-  constructor(private jokesService: JokesService, private localStorageService: LocalStorageService) { }
+  constructor(private jokesService: JokesService, private localStorageService: LocalStorageService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
@@ -105,5 +107,13 @@ export class JokeListComponent implements OnInit {
     this.localStorageService.set(Constants.KEY_SAVED_JOKES, Array.from(this.myJokes));
     this.exitMyList();
     this.getSavedJokes();
+  }
+
+  openDialog(joke: String) {
+    this.dialog.open(ShareJokeDialog, {
+      data: {
+        joke: joke
+      }
+    });
   }
 }

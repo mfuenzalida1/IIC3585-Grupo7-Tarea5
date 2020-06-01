@@ -51,10 +51,14 @@
                         <ul>
                             <li class="nobull" *ngFor="let joke of jokeList">
                                 <div class="inline" *ngIf="!myJokes.has(joke)">
-                                    <a (click)="saveJoke(joke)" class="pure-button pure-button-primary inline-btn">Guardar</a> <h6 class="joke-item inline"> {{joke}} </h6>
+                                    <a (click)="saveJoke(joke)" class="pure-button pure-button-primary inline-btn">Guardar</a>
+                                    <a (click)="openDialog(joke)" class="pure-button pure-button-primary inline-btn">Compartir</a>
+                                    <h6 class="joke-item inline"> {{joke}} </h6>
                                 </div>
                                 <div class="inline" *ngIf="myJokes.has(joke)">
-                                    <a class="pure-button pure-button-primary inline-btn">Guardado</a> <h6 class="joke-item inline"> {{joke}} </h6>
+                                    <a class="pure-button pure-button-primary inline-btn">Guardado</a>
+                                    <a (click)="openDialog(joke)" class="pure-button pure-button-primary inline-btn">Compartir</a>
+                                    <h6 class="joke-item inline"> {{joke}} </h6>
                                 </div>
                             </li>
                         </ul>
@@ -70,7 +74,9 @@
                     <div *ngIf="myJokes.size !== 0">
                         <ul>
                             <li class="nobull inline" *ngFor="let joke of myJokes">
-                                <a (click)="removeJoke(joke)" class="pure-button pure-button-primary inline-btn">Eliminar</a> <h6 class="joke-item inline"> {{joke}} </h6>
+                                <a (click)="removeJoke(joke)" class="pure-button pure-button-primary inline-btn">Eliminar</a>
+                                <a (click)="openDialog(joke)" class="pure-button pure-button-primary inline-btn">Compartir</a>
+                                <h6 class="joke-item inline"> {{joke}} </h6>
                             </li>
                         </ul>
                     </div>
