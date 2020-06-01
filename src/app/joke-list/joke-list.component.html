@@ -17,7 +17,7 @@
     <div class="splash">
         <div class="pure-g">
             <div class="l-box-lrg pure-u-1 pure-u-md-2-5 submit-form">
-                <div *ngIf="!displayList">
+                <div *ngIf="!displayList && !displayMyList">
                     <h1 class="content-head is-center">JokesOnYou</h1>
                     <div class="l-box-lrg pure-u-1 pure-u-md-2-5">
                         <form class="pure-form pure-form-stacked">
@@ -27,12 +27,11 @@
                             </fieldset>
                         </form>
                     </div>
-                    <p>
-                        <a (click)="searchJoke()" class="pure-button pure-button-primary btn-fixed-size">Buscar chiste</a>
-                    </p>
-                    <p>
-                        <a (click)="randomJoke()" class="pure-button pure-button-primary btn-fixed-size">Chiste aleatorio</a>
-                    </p>
+                    <div class="inline">
+                        <a (click)="searchJoke()" class="pure-button pure-button-primary btn-fixed-size inline">Buscar chiste</a>
+                        <a (click)="randomJoke()" class="pure-button pure-button-primary btn-fixed-size inline">Chiste aleatorio</a>
+                    </div>
+                    <a (click)="getSavedJokes()" class="pure-button pure-button-primary btn-fixed-size">Mis chistes</a>
                     <br>
                     <br>
                     <span>
@@ -51,12 +50,32 @@
                     <div *ngIf="jokeList.size !== 0">
                         <ul>
                             <li class="nobull" *ngFor="let joke of jokeList">
-                                <h6 class="joke-item"> {{joke}} </h6>
+                                <div class="inline" *ngIf="!myJokes.has(joke)">
+                                    <a (click)="saveJoke(joke)" class="pure-button pure-button-primary inline-btn">Guardar</a> <h6 class="joke-item inline"> {{joke}} </h6>
+                                </div>
+                                <div class="inline" *ngIf="myJokes.has(joke)">
+                                    <a class="pure-button pure-button-primary inline-btn">Guardado</a> <h6 class="joke-item inline"> {{joke}} </h6>
+                                </div>
                             </li>
                         </ul>
                     </div>
                     <p>
                         <a (click)="clearSearch()" class="pure-button pure-button-primary btn-fixed-size">Volver</a>
+                    </p>
+                </div>
+                <div *ngIf="displayMyList">
+                    <div *ngIf="myJokes.size === 0">
+                        <h4>No tienes chistes guardados</h4>
+                    </div>
+                    <div *ngIf="myJokes.size !== 0">
+                        <ul>
+                            <li class="nobull inline" *ngFor="let joke of myJokes">
+                                <a (click)="removeJoke(joke)" class="pure-button pure-button-primary inline-btn">Eliminar</a> <h6 class="joke-item inline"> {{joke}} </h6>
+                            </li>
+                        </ul>
+                    </div>
+                    <p>
+                        <a (click)="exitMyList()" class="pure-button pure-button-primary btn-fixed-size">Volver</a>
                     </p>
                 </div>
             </div>

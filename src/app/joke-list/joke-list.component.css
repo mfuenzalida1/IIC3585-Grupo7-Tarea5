@@ -31,7 +31,8 @@ label {
 }
 
 .l-box-lrg {
-    padding: 2em;
+    padding-right: 2em;
+    padding-left: 2em;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
@@ -206,6 +207,16 @@ a.pure-button-primary {
     color: white;
 }
 
+.inline {
+    display: inline-flex;
+    margin: 5px;
+}
+
+.inline-btn {
+    display: inline-flex;
+    height: 10% !important;
+    margin: 5px;
+}
 
 /*
 Tablets
