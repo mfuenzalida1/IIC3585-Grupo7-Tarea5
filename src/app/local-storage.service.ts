@@ -1,4 +1,7 @@
 import { Injectable } from '@angular/core';
+
+
+// Fuente: https://firstclassjs.com/persist-data-using-local-storage-and-angular/
 @Injectable({
   providedIn: 'root'
 })

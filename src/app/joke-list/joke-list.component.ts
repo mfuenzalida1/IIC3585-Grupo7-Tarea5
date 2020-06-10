@@ -98,17 +98,17 @@ export class JokeListComponent implements OnInit {
     this.displayMyList = true;
   }
 
-  exitMyList() {
-    this.displayMyList = false;
-  }
-
   removeJoke(joke: String) {
     this.myJokes.delete(joke);
     this.localStorageService.set(Constants.KEY_SAVED_JOKES, Array.from(this.myJokes));
     this.exitMyList();
     this.getSavedJokes();
   }
-
+  
+  exitMyList() {
+    this.displayMyList = false;
+  }
+  
   openDialog(joke: String) {
     this.dialog.open(ShareJokeDialog, {
       data: {
